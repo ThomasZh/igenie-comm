@@ -13,6 +13,7 @@ public class ActivityRecommend
 	private String activityId;
 	private String fromUserId;
 	private String fromUserName;
+	private String fromUserImageUrl;
 	private String[] toUserIds;
 	private String toUserId;
 	private short syncState;
@@ -121,4 +122,13 @@ public class ActivityRecommend
 		this.syncState = syncState;
 	}
 
+	public String getFromUserImageUrl()
+	{
+		return fromUserImageUrl;
+	}
+
+	public void setFromUserImageUrl(String fromUserImageUrl)
+	{
+		this.fromUserImageUrl = fromUserImageUrl;
+	}
 }
