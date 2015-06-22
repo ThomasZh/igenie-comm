@@ -173,6 +173,7 @@ public class GlobalArgs
 	public static final short SUP_TYPE_ACCOUNT_SERVER = 1701;
 	public static final short SUP_TYPE_SESSION_SERVER = 1702;
 	public static final short SUP_TYPE_DEVICE_SERVER = 1703;
+	public static final short SUP_TYPE_MAIL_SERVER = 1704;
 
 	public static final String ID_DEFAULT_NONE = "00000000-0000-0000-0000-000000000000";
 }
