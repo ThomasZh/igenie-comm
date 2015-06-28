@@ -29,6 +29,9 @@ public class ErrorCode
 	public static final short LOGIN_WRONG_PWD = Command.LOGIN_REQ * 10 + 1;
 	public static final short NOT_MATCH_OLD_PASSWORD = Command.CHANGE_PASSWORD_REQ * 10 + 1;
 
+	public static final short REGISTER_PHONE_EXIST = 6031;
+	public static final short NOT_MATCH_VERIFICATION_CODE = 6032;
+	
 	public static final short ACTIVITY_ALREADY_CANCELED = Command.ACTIVITY_JOIN_REQ * 10 + 1;
 	public static final short ACTIVITY_ALREADY_STARTED = Command.ACTIVITY_UPDATE_REQ * 10 + 1;
 

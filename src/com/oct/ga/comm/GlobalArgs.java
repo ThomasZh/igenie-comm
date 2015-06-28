@@ -174,6 +174,12 @@ public class GlobalArgs
 	public static final short SUP_TYPE_SESSION_SERVER = 1702;
 	public static final short SUP_TYPE_DEVICE_SERVER = 1703;
 	public static final short SUP_TYPE_MAIL_SERVER = 1704;
+	public static final short SUP_TYPE_SMS_SERVER = 1705;
+	
+	public static final short VERIFICATION_TYPE_PHONE_REGISTER = 1801;
+	public static final short VERIFICATION_TYPE_PHONE_LOST_PWD = 1802;
+	public static final short VERIFICATION_TYPE_BIND_PHONE = 1803;
+	public static final short VERIFICATION_TYPE_BIND_EMAIL = 1804;
 
 	public static final String ID_DEFAULT_NONE = "00000000-0000-0000-0000-000000000000";
 }

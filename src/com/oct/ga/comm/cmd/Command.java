@@ -369,6 +369,13 @@ public interface Command
 	public static final short MONITOR_BYTE_RECV_REQ = 5005;
 	public static final short MONITOR_CONTEXT_RESP = 5099;
 
+	// ////////////////////////////////////////////////////////
+	// phone
+	public static final short APPLY_PHONE_REGISTER_VERIFICATION_CODE_REQ = 6001;
+	public static final short APPLY_PHONE_REGISTER_VERIFICATION_CODE_RESP = 6002;
+	public static final short PHONE_REGISTER_LOGIN_REQ = 6003;
+	public static final short PHONE_REGISTER_LOGIN_RESP = 6004;
+
 	/**
 	 * handling the decoded java object, may be save in DB
 	 * 

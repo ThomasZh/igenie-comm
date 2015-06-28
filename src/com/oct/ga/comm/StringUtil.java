@@ -1,6 +1,7 @@
 package com.oct.ga.comm;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Random;
 import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -52,6 +53,24 @@ public class StringUtil
 		return x + y;
 	}
 
+	/**
+	 * 获得6位随机数验证码
+	 * 
+	 * @return 验证码
+	 */
+	public static String random6num()
+	{
+		String code = "";
+		
+		Random random = new Random();
+		for (int i = 0; i < 6; i++) {
+			int num = random.nextInt(9);
+			code += num;
+		}
+		
+		return code;
+	}
+
 	public static void main(String[] args)
 			throws UnsupportedEncodingException
 	{
@@ -78,5 +97,8 @@ public class StringUtil
 
 		photoId = StringUtil.parserIdFromImageUtrl(imageUrl);
 		System.out.println(photoId);
+		
+		String code = StringUtil.random6num();
+		System.out.println(code);
 	}
 }

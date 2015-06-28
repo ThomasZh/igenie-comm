@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import com.oct.ga.comm.cmd.Command;
 import com.oct.ga.comm.cmd.StpCommand;
+import com.oct.ga.comm.cmd.account.ApplyPhoneRegisterVerificationCodeResp;
 import com.oct.ga.comm.cmd.account.ChangePasswordResp;
 import com.oct.ga.comm.cmd.account.ForgotPasswordResp;
 import com.oct.ga.comm.cmd.account.QueryForgotPwdEmailResp;
@@ -24,6 +25,7 @@ import com.oct.ga.comm.cmd.apply.SyncApplyStateResp;
 import com.oct.ga.comm.cmd.appver.CheckVersionUpdateResp;
 import com.oct.ga.comm.cmd.auth.HeartbitReq;
 import com.oct.ga.comm.cmd.auth.LoginResp;
+import com.oct.ga.comm.cmd.auth.PhoneRegisterLoginResp;
 import com.oct.ga.comm.cmd.auth.RegisterLoginReq;
 import com.oct.ga.comm.cmd.auth.RegisterLoginResp;
 import com.oct.ga.comm.cmd.auth.RegisterResp;
@@ -362,6 +364,11 @@ public abstract class CommandParser
 			return new QueryMessagePaginationResp().decode(tlv);
 		case Command.QUERY_MESSAGE_BADGE_NUMBER_RESP:
 			return new QueryMessageBadgeNumberResp().decode(tlv);
+
+		case Command.APPLY_PHONE_REGISTER_VERIFICATION_CODE_RESP:
+			return new ApplyPhoneRegisterVerificationCodeResp().decode(tlv);
+		case Command.PHONE_REGISTER_LOGIN_RESP:
+			return new PhoneRegisterLoginResp().decode(tlv);
 
 		default:
 			logger.warn("Unknow command tag: " + tlv.getTag());
