@@ -21,17 +21,18 @@ public class ApplyPhoneRegisterVerificationCodeReq
 		this.setTag(Command.APPLY_PHONE_REGISTER_VERIFICATION_CODE_REQ);
 	}
 
-	public ApplyPhoneRegisterVerificationCodeReq(String deviceId, String phone)
+	public ApplyPhoneRegisterVerificationCodeReq(String deviceId, String phone, String lang)
 	{
 		this();
 
 		this.setDeviceId(deviceId);
 		this.setPhone(phone);
+		this.setLang(lang);
 	}
 
-	public ApplyPhoneRegisterVerificationCodeReq(int sequence, String deviceId, String phone)
+	public ApplyPhoneRegisterVerificationCodeReq(int sequence, String deviceId, String phone, String lang)
 	{
-		this(deviceId, phone);
+		this(deviceId, phone, lang);
 
 		this.setSequence(sequence);
 	}
@@ -42,7 +43,7 @@ public class ApplyPhoneRegisterVerificationCodeReq
 	{
 		this.setTag(tlv.getTag());
 
-		int childCount = 3;
+		int childCount = 4;
 		logger.debug("from tlv:(tag=" + this.getTag() + ", child=" + childCount + ") to command");
 		TlvParser.decodeChildren(tlv, childCount);
 
@@ -59,6 +60,10 @@ public class ApplyPhoneRegisterVerificationCodeReq
 		phone = new String(tPhone.getValue(), "UTF-8");
 		logger.debug("phone: " + phone);
 
+		TlvObject tLang = tlv.getChild(i++);
+		lang = new String(tLang.getValue(), "UTF-8");
+		logger.debug("lang: " + lang);
+
 		return this;
 	}
 
@@ -71,11 +76,13 @@ public class ApplyPhoneRegisterVerificationCodeReq
 		TlvObject tSequence = new TlvObject(i++, 4, TlvByteUtil.int2Byte(this.getSequence()));
 		TlvObject tDeviceId = new TlvObject(i++, deviceId);
 		TlvObject tPhone = new TlvObject(i++, phone);
+		TlvObject tLang = new TlvObject(i++, lang);
 
 		TlvObject tlv = new TlvObject(this.getTag());
 		tlv.push(tSequence);
 		tlv.push(tDeviceId);
 		tlv.push(tPhone);
+		tlv.push(tLang);
 
 		logger.debug("from command to tlv package:(tag=" + this.getTag() + ", child=" + i + ", length="
 				+ tlv.getLength() + ")");
@@ -85,6 +92,7 @@ public class ApplyPhoneRegisterVerificationCodeReq
 
 	private String deviceId;
 	private String phone;
+	private String lang;
 
 	public String getDeviceId()
 	{
@@ -104,6 +112,16 @@ public class ApplyPhoneRegisterVerificationCodeReq
 	public void setPhone(String phone)
 	{
 		this.phone = phone;
+	}
+
+	public String getLang()
+	{
+		return lang;
+	}
+
+	public void setLang(String lang)
+	{
+		this.lang = lang;
 	}
 
 	private final static Logger logger = LoggerFactory.getLogger(ApplyPhoneRegisterVerificationCodeReq.class);

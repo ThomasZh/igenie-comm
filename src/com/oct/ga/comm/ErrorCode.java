@@ -31,6 +31,9 @@ public class ErrorCode
 
 	public static final short REGISTER_PHONE_EXIST = 6031;
 	public static final short NOT_MATCH_VERIFICATION_CODE = 6032;
+	public static final short APPLY_VERIFICATON_CODE_TOO_MOUCH_TIMES = 6033;
+	public static final short VERIFICATON_CODE_TIMEOUT = 6034;
+	public static final short NOT_MATCH_PHONE = 6035;
 	
 	public static final short ACTIVITY_ALREADY_CANCELED = Command.ACTIVITY_JOIN_REQ * 10 + 1;
 	public static final short ACTIVITY_ALREADY_STARTED = Command.ACTIVITY_UPDATE_REQ * 10 + 1;
