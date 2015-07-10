@@ -107,6 +107,8 @@ public interface Command
 	public static final short QUERY_MOMENT_PHOTOFLOW_PAGINATION_RESP = 1116;
 	public static final short QUERY_CLUB_MOMENT_PHOTOFLOW_PAGINATION_REQ = 1117;
 	public static final short QUERY_CLUB_MOMENT_PHOTOFLOW_PAGINATION_RESP = 1118;
+	public static final short DELETE_MOMENT_REQ = 1119;
+	public static final short DELETE_MOMENT_RESP = 1120;
 
 	// ////////////////////////////////////////////////////////
 	// group: member
@@ -333,6 +335,8 @@ public interface Command
 	public static final short ACTIVITY_QUERY_SUBSCRIBE_FILTER_BY_TIME_RANGE_PAGINATION_RESP = 3068;
 	public static final short ACTIVITY_QUERY_FUTURE_PAGINATION_REQ = 3069;
 	public static final short ACTIVITY_QUERY_FUTURE_PAGINATION_RESP = 3070;
+	public static final short ACTIVITY_KICKOUT_MEMBER_REQ = 3071;
+	public static final short ACTIVITY_KICKOUT_MEMBER_RESP = 3072;
 
 	// ////////////////////////////////////////////////////////
 	// management for publish
@@ -375,7 +379,13 @@ public interface Command
 	public static final short APPLY_PHONE_REGISTER_VERIFICATION_CODE_RESP = 6002;
 	public static final short PHONE_REGISTER_LOGIN_REQ = 6003;
 	public static final short PHONE_REGISTER_LOGIN_RESP = 6004;
-
+	public static final short APPLY_BIND_PHONE_REQ = 6005;
+	public static final short APPLY_BIND_PHONE_RESP = 6006;
+	public static final short BIND_PHONE_REQ = 6007;
+	public static final short BIND_PHONE_RESP = 6008;
+	public static final short BIND_MARGE_PHONE_REQ = 6009;
+	public static final short BIND_MARGE_PHONE_RESP = 6010;
+	
 	/**
 	 * handling the decoded java object, may be save in DB
 	 * 

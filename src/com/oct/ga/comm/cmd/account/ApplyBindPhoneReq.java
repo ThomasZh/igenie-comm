@@ -1,4 +1,4 @@
-package com.oct.ga.comm.cmd.following;
+package com.oct.ga.comm.cmd.account;
 
 import java.io.UnsupportedEncodingException;
 
@@ -11,32 +11,32 @@ import com.oct.ga.comm.tlv.TlvByteUtil;
 import com.oct.ga.comm.tlv.TlvObject;
 import com.oct.ga.comm.tlv.TlvParser;
 
-public class UnfollowingReq
+public class ApplyBindPhoneReq
 		extends ReqCommand
 {
-	public UnfollowingReq()
+	public ApplyBindPhoneReq()
 	{
 		super();
 
-		this.setTag(Command.UNFOLLOW_REQ);
+		this.setTag(Command.APPLY_BIND_PHONE_REQ);
 	}
 
-	public UnfollowingReq(String friendId)
+	public ApplyBindPhoneReq(String phone)
 	{
 		this();
 
-		this.setFriendId(friendId);
+		this.setPhone(phone);
 	}
 
-	public UnfollowingReq(int sequence, String friendId)
+	public ApplyBindPhoneReq(int sequence, String phone)
 	{
-		this(friendId);
+		this(phone);
 
 		this.setSequence(sequence);
 	}
 
 	@Override
-	public UnfollowingReq decode(TlvObject tlv)
+	public ApplyBindPhoneReq decode(TlvObject tlv)
 			throws UnsupportedEncodingException
 	{
 		this.setTag(tlv.getTag());
@@ -50,9 +50,9 @@ public class UnfollowingReq
 		this.setSequence(TlvByteUtil.byte2Int(tSequence.getValue()));
 		logger.debug("sequence: " + this.getSequence());
 
-		TlvObject tFriendId = tlv.getChild(i++);
-		friendId = new String(tFriendId.getValue(), "UTF-8");
-		logger.info("friendId: " + friendId);
+		TlvObject tPhone = tlv.getChild(i++);
+		phone = new String(tPhone.getValue(), "UTF-8");
+		logger.debug("phone: " + phone);
 
 		return this;
 	}
@@ -64,11 +64,11 @@ public class UnfollowingReq
 		int i = 0;
 
 		TlvObject tSequence = new TlvObject(i++, 4, TlvByteUtil.int2Byte(this.getSequence()));
-		TlvObject tFriendId = new TlvObject(i++, friendId);
+		TlvObject tPhone = new TlvObject(i++, phone);
 
 		TlvObject tlv = new TlvObject(this.getTag());
 		tlv.push(tSequence);
-		tlv.push(tFriendId);
+		tlv.push(tPhone);
 
 		logger.debug("from command to tlv package:(tag=" + this.getTag() + ", child=" + i + ", length="
 				+ tlv.getLength() + ")");
@@ -76,17 +76,18 @@ public class UnfollowingReq
 		return tlv;
 	}
 
-	private String friendId;
+	private String phone;
 
-	public String getFriendId()
+	public String getPhone()
 	{
-		return friendId;
+		return phone;
 	}
 
-	public void setFriendId(String friendId)
+	public void setPhone(String phone)
 	{
-		this.friendId = friendId;
+		this.phone = phone;
 	}
 
-	private final static Logger logger = LoggerFactory.getLogger(UnfollowingReq.class);
+	private final static Logger logger = LoggerFactory.getLogger(ApplyBindPhoneReq.class);
+
 }

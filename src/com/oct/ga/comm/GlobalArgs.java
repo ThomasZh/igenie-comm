@@ -112,6 +112,7 @@ public class GlobalArgs
 	public static final short TASK_ACTION_MODIFY_NOTE = 221;
 	public static final short TASK_ACTION_REMOVE_NOTE = 222;
 	public static final short TASK_ACTION_MOVTTO_PROJECT = 223;
+	public static final short TASK_ACTION_REMOVE_ATTACH = 224;
 
 	public static final short TEMPLATE_TYPE_PROJECT = 301;
 	public static final short TEMPLATE_TYPE_TASK = 302;

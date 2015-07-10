@@ -1,4 +1,4 @@
-package com.oct.ga.comm.cmd.following;
+package com.oct.ga.comm.cmd.club;
 
 import java.io.UnsupportedEncodingException;
 
@@ -11,42 +11,20 @@ import com.oct.ga.comm.tlv.TlvByteUtil;
 import com.oct.ga.comm.tlv.TlvObject;
 import com.oct.ga.comm.tlv.TlvParser;
 
-public class UnfollowingResp
+public class KickoutMemberResp
 		extends RespCommand
 {
-	public UnfollowingResp()
+	public KickoutMemberResp()
 	{
-		this.setTag(Command.UNFOLLOW_RESP);
+		this.setTag(Command.ACTIVITY_KICKOUT_MEMBER_RESP);
 	}
 
-	public UnfollowingResp(int sequence, short respState)
+	public KickoutMemberResp(int sequence, short respState)
 	{
 		this();
 
 		this.setSequence(sequence);
 		this.setRespState(respState);
-	}
-
-	@Override
-	public UnfollowingResp decode(TlvObject tlv)
-			throws UnsupportedEncodingException
-	{
-		this.setTag(tlv.getTag());
-
-		int childCount = 2;
-		logger.debug("from tlv:(tag=" + this.getTag() + ", child=" + childCount + ") to command");
-		TlvParser.decodeChildren(tlv, childCount);
-
-		int i = 0;
-		TlvObject tSequence = tlv.getChild(i++);
-		this.setSequence(TlvByteUtil.byte2Int(tSequence.getValue()));
-		logger.debug("sequence: " + this.getSequence());
-
-		TlvObject tState = tlv.getChild(i++);
-		this.setRespState(TlvByteUtil.byte2Short(tState.getValue()));
-		logger.debug("respState: " + this.getRespState());
-
-		return this;
 	}
 
 	@Override
@@ -68,6 +46,28 @@ public class UnfollowingResp
 		return tlv;
 	}
 
-	private final static Logger logger = LoggerFactory.getLogger(UnfollowingResp.class);
+	@Override
+	public KickoutMemberResp decode(TlvObject tlv)
+			throws UnsupportedEncodingException
+	{
+		this.setTag(tlv.getTag());
+
+		int childCount = 2;
+		logger.debug("from tlv:(tag=" + this.getTag() + ", child=" + childCount + ") to command");
+		TlvParser.decodeChildren(tlv, childCount);
+
+		int i = 0;
+		TlvObject tSequence = tlv.getChild(i++);
+		this.setSequence(TlvByteUtil.byte2Int(tSequence.getValue()));
+		logger.debug("sequence: " + this.getSequence());
+
+		TlvObject tState = tlv.getChild(i++);
+		this.setRespState(TlvByteUtil.byte2Short(tState.getValue()));
+		logger.debug("respState: " + this.getRespState());
+
+		return this;
+	}
+
+	private final static Logger logger = LoggerFactory.getLogger(KickoutMemberResp.class);
 
 }

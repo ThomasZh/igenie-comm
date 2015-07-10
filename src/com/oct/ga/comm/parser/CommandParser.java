@@ -7,7 +7,10 @@ import org.slf4j.LoggerFactory;
 
 import com.oct.ga.comm.cmd.Command;
 import com.oct.ga.comm.cmd.StpCommand;
+import com.oct.ga.comm.cmd.account.ApplyBindPhoneResp;
 import com.oct.ga.comm.cmd.account.ApplyPhoneRegisterVerificationCodeResp;
+import com.oct.ga.comm.cmd.account.BindMargePhoneResp;
+import com.oct.ga.comm.cmd.account.BindPhoneResp;
 import com.oct.ga.comm.cmd.account.ChangePasswordResp;
 import com.oct.ga.comm.cmd.account.ForgotPasswordResp;
 import com.oct.ga.comm.cmd.account.QueryForgotPwdEmailResp;
@@ -69,6 +72,7 @@ import com.oct.ga.comm.cmd.club.ClubSubscribersRemoveResp;
 import com.oct.ga.comm.cmd.club.ClubSubscribersUpdateReq;
 import com.oct.ga.comm.cmd.club.ClubSubscribersUpdateResp;
 import com.oct.ga.comm.cmd.club.ClubUpdateResp;
+import com.oct.ga.comm.cmd.club.KickoutMemberResp;
 import com.oct.ga.comm.cmd.desc.ActivityCreateDescResp;
 import com.oct.ga.comm.cmd.desc.ActivityModifyAllDescResp;
 import com.oct.ga.comm.cmd.desc.ActivityModifyDescResp;
@@ -89,6 +93,7 @@ import com.oct.ga.comm.cmd.invite.InviteResp;
 import com.oct.ga.comm.cmd.invite.QueryInvitedRegisterSemiIdResp;
 import com.oct.ga.comm.cmd.invite.SyncInviteResp;
 import com.oct.ga.comm.cmd.moment.AddMomentResp;
+import com.oct.ga.comm.cmd.moment.DeleteMomentResp;
 import com.oct.ga.comm.cmd.moment.QueryMomentPaginationResp;
 import com.oct.ga.comm.cmd.moment.QueryMomentPhotoFlowPaginationResp;
 import com.oct.ga.comm.cmd.msg.ConfirmMessageReadResp;
@@ -245,6 +250,8 @@ public abstract class CommandParser
 			return new ActivityQuerySubscribeFilterByTimeRangePaginationResp().decode(tlv);
 		case Command.ACTIVITY_QUERY_FUTURE_PAGINATION_RESP:
 			return new ActivityQueryFuturePaginationResp().decode(tlv);
+		case Command.ACTIVITY_KICKOUT_MEMBER_RESP:
+			return new KickoutMemberResp().decode(tlv);
 
 		case Command.PUBLISH_QUERY_LOC_HOT_PAGINATION_RESP:
 			return new QueryLocHotResp().decode(tlv);
@@ -268,6 +275,8 @@ public abstract class CommandParser
 			return new QueryMomentPhotoFlowPaginationResp().decode(tlv);
 		case Command.QUERY_MOMENT_PAGINATION_RESP:
 			return new QueryMomentPaginationResp().decode(tlv);
+		case Command.DELETE_MOMENT_RESP:
+			return new DeleteMomentResp().decode(tlv);
 
 		case Command.FOLLOWING_RESP:
 			return new FollowingResp().decode(tlv);// lwz7512@2014/11/03
@@ -369,6 +378,12 @@ public abstract class CommandParser
 			return new ApplyPhoneRegisterVerificationCodeResp().decode(tlv);
 		case Command.PHONE_REGISTER_LOGIN_RESP:
 			return new PhoneRegisterLoginResp().decode(tlv);
+		case Command.APPLY_BIND_PHONE_RESP:
+			return new ApplyBindPhoneResp().decode(tlv);
+		case Command.BIND_PHONE_RESP:
+			return new BindPhoneResp().decode(tlv);
+		case Command.BIND_MARGE_PHONE_RESP:
+			return new BindMargePhoneResp().decode(tlv);
 
 		default:
 			logger.warn("Unknow command tag: " + tlv.getTag());
