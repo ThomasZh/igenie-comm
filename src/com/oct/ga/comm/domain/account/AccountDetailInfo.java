@@ -12,6 +12,7 @@ public class AccountDetailInfo
 	private String desc;
 	private String email; // toLowerCase
 	private String telephone;
+	private String lang;
 	private short state;
 
 	@Override
@@ -74,5 +75,15 @@ public class AccountDetailInfo
 	public void setDesc(String desc)
 	{
 		this.desc = desc;
+	}
+
+	public String getLang()
+	{
+		return lang;
+	}
+
+	public void setLang(String lang)
+	{
+		this.lang = lang;
 	}
 }

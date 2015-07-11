@@ -28,15 +28,24 @@ public class SyncMyAccountReq
 		this.setLastTryTime(lastTryTime);
 	}
 
+	public SyncMyAccountReq(int sequence, int lastTryTime)
+	{
+		this(lastTryTime);
+
+		this.setSequence(sequence);
+	}
+
 	@Override
 	public TlvObject encode()
 			throws UnsupportedEncodingException
 	{
 		int i = 0;
 
+		TlvObject tSequence = new TlvObject(i++, 4, TlvByteUtil.int2Byte(this.getSequence()));
 		TlvObject tTimestamp = new TlvObject(i++, 4, TlvByteUtil.int2Byte(lastTryTime));
 
 		TlvObject tlv = new TlvObject(this.getTag());
+		tlv.push(tSequence);
 		tlv.push(tTimestamp);
 
 		logger.debug("from command to tlv package:(tag=" + this.getTag() + ", child=" + i + ", length="
@@ -51,11 +60,15 @@ public class SyncMyAccountReq
 	{
 		this.setTag(tlv.getTag());
 
-		int childCount = 1;
+		int childCount = 2;
 		logger.debug("from tlv:(tag=" + this.getTag() + ", child=" + childCount + ") to command");
 		TlvParser.decodeChildren(tlv, childCount);
 
 		int i = 0;
+		TlvObject tSequence = tlv.getChild(i++);
+		this.setSequence(TlvByteUtil.byte2Int(tSequence.getValue()));
+		logger.debug("sequence: " + this.getSequence());
+
 		TlvObject tTimestamp = tlv.getChild(i++);
 		int timestamp = TlvByteUtil.byte2Int(tTimestamp.getValue());
 		logger.debug("timestamp: " + timestamp);
