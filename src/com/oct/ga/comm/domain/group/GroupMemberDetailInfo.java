@@ -1,11 +1,11 @@
 package com.oct.ga.comm.domain.group;
 
 import com.google.gson.Gson;
-import com.oct.ga.comm.domain.account.AccountMasterInfo;
+import com.oct.ga.comm.domain.account.AccountBasic;
 
 
 public class GroupMemberDetailInfo
-		extends AccountMasterInfo
+		extends AccountBasic
 {
 	/**
 	 * 
@@ -29,7 +29,7 @@ public class GroupMemberDetailInfo
 	private short state;
 	private String groupId;
 
-	@Override
+	//@Override
 	public GroupMemberDetailInfo decode(String json)
 	{
 		Gson gson = new Gson();
@@ -37,7 +37,7 @@ public class GroupMemberDetailInfo
 		return info;
 	}
 
-	@Override
+	//@Override
 	public String encode()
 	{
 		Gson gson = new Gson();

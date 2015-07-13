@@ -1,10 +1,10 @@
 package com.oct.ga.comm.domain.group;
 
 import com.google.gson.Gson;
-import com.oct.ga.comm.domain.account.AccountMasterInfo;
+import com.oct.ga.comm.domain.account.AccountBasic;
 
 public class GroupMemberMasterInfo
-		extends AccountMasterInfo
+		extends AccountBasic
 {
 	/**
 	 * 
@@ -13,7 +13,7 @@ public class GroupMemberMasterInfo
 	private short state;
 	private short rank;
 
-	@Override
+	//@Override
 	public GroupMemberMasterInfo decode(String json)
 	{
 		Gson gson = new Gson();
@@ -21,7 +21,7 @@ public class GroupMemberMasterInfo
 		return info;
 	}
 
-	@Override
+	//@Override
 	public String encode()
 	{
 		Gson gson = new Gson();

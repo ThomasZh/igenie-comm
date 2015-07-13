@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import com.oct.ga.comm.cmd.Command;
 import com.oct.ga.comm.cmd.RespCommand;
-import com.oct.ga.comm.domain.account.AccountDetailInfo;
+import com.oct.ga.comm.domain.account.AccountMaster;
 import com.oct.ga.comm.tlv.TlvByteUtil;
 import com.oct.ga.comm.tlv.TlvObject;
 import com.oct.ga.comm.tlv.TlvParser;
@@ -20,7 +20,7 @@ public class FollowingResp
 		this.setTag(Command.FOLLOWING_RESP);
 	}
 
-	public FollowingResp(short state, AccountDetailInfo account)
+	public FollowingResp(short state, AccountMaster account)
 	{
 		this();
 
@@ -34,11 +34,11 @@ public class FollowingResp
 	{
 		TlvObject tSequence = new TlvObject(1, 4, TlvByteUtil.int2Byte(sequence));
 		TlvObject tResultFlag = new TlvObject(2, 2, TlvByteUtil.short2Byte(this.getRespState()));
-		TlvObject tAccountId = new TlvObject(3, account.getId());
-		TlvObject tFirstname = new TlvObject(4, account.getName());
-		TlvObject tFacePhoto = new TlvObject(5, account.getImageUrl());
+		TlvObject tAccountId = new TlvObject(3, account.getAccountId());
+		TlvObject tFirstname = new TlvObject(4, account.getNickname());
+		TlvObject tFacePhoto = new TlvObject(5, account.getAvatarUrl());
 		TlvObject tEmail = new TlvObject(6, account.getEmail());
-		TlvObject tTelephone = new TlvObject(7, account.getTelephone());
+		TlvObject tTelephone = new TlvObject(7, account.getPhone());
 
 		TlvObject tlv = new TlvObject(Command.FOLLOWING_RESP);
 		tlv.push(tSequence);
@@ -55,45 +55,46 @@ public class FollowingResp
 		return tlv;
 	}
 
-    @Override
-    public FollowingResp decode(TlvObject tlv) throws UnsupportedEncodingException{
-        TlvParser.decodeChildren(tlv, 7);
+	@Override
+	public FollowingResp decode(TlvObject tlv)
+			throws UnsupportedEncodingException
+	{
+		TlvParser.decodeChildren(tlv, 7);
 
-        TlvObject tSequence = tlv.getChild(0);
-        this.setSequence(TlvByteUtil.byte2Int(tSequence.getValue()));
+		TlvObject tSequence = tlv.getChild(0);
+		this.setSequence(TlvByteUtil.byte2Int(tSequence.getValue()));
 
-        TlvObject tResultFlag = tlv.getChild(1);
-        this.setRespState(TlvByteUtil.byte2Short(tResultFlag.getValue()));
+		TlvObject tResultFlag = tlv.getChild(1);
+		this.setRespState(TlvByteUtil.byte2Short(tResultFlag.getValue()));
 
-        account = new AccountDetailInfo();
+		account = new AccountMaster();
 
-        TlvObject tAccountId = tlv.getChild(2);
-        account.setId(new String(tAccountId.getValue(), "UTF-8"));
+		TlvObject tAccountId = tlv.getChild(2);
+		account.setAccountId(new String(tAccountId.getValue(), "UTF-8"));
 
-        TlvObject tFirstname = tlv.getChild(3);
-        account.setName(new String(tFirstname.getValue(),"UTF-8"));
+		TlvObject tFirstname = tlv.getChild(3);
+		account.setNickname(new String(tFirstname.getValue(), "UTF-8"));
 
-        TlvObject tFacePhoto = tlv.getChild(4);
-        account.setImageUrl(new String(tFacePhoto.getValue(), "UTF-8"));
+		TlvObject tFacePhoto = tlv.getChild(4);
+		account.setAvatarUrl(new String(tFacePhoto.getValue(), "UTF-8"));
 
-        TlvObject tEmail = tlv.getChild(5);
-        account.setEmail(new String(tEmail.getValue(), "UTF-8"));
+		TlvObject tEmail = tlv.getChild(5);
+		account.setEmail(new String(tEmail.getValue(), "UTF-8"));
 
-        TlvObject tTelephone = tlv.getChild(6);
-        account.setTelephone(new String(tTelephone.getValue(), "UTF-8"));
+		TlvObject tTelephone = tlv.getChild(6);
+		account.setPhone(new String(tTelephone.getValue(), "UTF-8"));
 
-        return this;
-    }
+		return this;
+	}
 
+	private AccountMaster account;
 
-    private AccountDetailInfo account;
-
-	public AccountDetailInfo getAccount()
+	public AccountMaster getAccount()
 	{
 		return account;
 	}
 
-	public void setAccount(AccountDetailInfo account)
+	public void setAccount(AccountMaster account)
 	{
 		this.account = account;
 	}

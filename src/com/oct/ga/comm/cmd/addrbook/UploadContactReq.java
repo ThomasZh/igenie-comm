@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import com.oct.ga.comm.cmd.Command;
 import com.oct.ga.comm.cmd.ReqCommand;
 import com.oct.ga.comm.domain.Contact;
-import com.oct.ga.comm.domain.account.AccountDetailInfo;
+import com.oct.ga.comm.domain.account.AccountMaster;
 import com.oct.ga.comm.tlv.TlvByteUtil;
 import com.oct.ga.comm.tlv.TlvObject;
 import com.oct.ga.comm.tlv.TlvParser;
@@ -117,11 +117,11 @@ public class UploadContactReq
 		return false;
 	}
 
-	private boolean isValid(AccountDetailInfo account)
+	private boolean isValid(AccountMaster account)
 	{
 		if (account == null)
 			return false;
-		if (account.getId() == null)
+		if (account.getAccountId() == null)
 			return false;
 
 		return true;

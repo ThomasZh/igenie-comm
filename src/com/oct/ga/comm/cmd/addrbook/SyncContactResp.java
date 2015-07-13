@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import com.oct.ga.comm.cmd.Command;
 import com.oct.ga.comm.cmd.RespCommand;
-import com.oct.ga.comm.domain.account.AccountDetailInfo;
+import com.oct.ga.comm.domain.account.AccountMaster;
 import com.oct.ga.comm.tlv.TlvObject;
 
 public class SyncContactResp
@@ -18,7 +18,7 @@ public class SyncContactResp
 		this.setTag(Command.SYNC_CONTACT_RESP);
 	}
 
-	public SyncContactResp(AccountDetailInfo account)
+	public SyncContactResp(AccountMaster account)
 	{
 		this();
 
@@ -29,11 +29,11 @@ public class SyncContactResp
 	public TlvObject encode()
 			throws UnsupportedEncodingException
 	{
-		TlvObject tAccountId = new TlvObject(1, account.getId());
-		TlvObject tFirstname = new TlvObject(2, account.getName());
-		TlvObject tFacePhoto = new TlvObject(3, account.getImageUrl());
+		TlvObject tAccountId = new TlvObject(1, account.getAccountId());
+		TlvObject tFirstname = new TlvObject(2, account.getNickname());
+		TlvObject tFacePhoto = new TlvObject(3, account.getAvatarUrl());
 		TlvObject tEmail = new TlvObject(4, account.getEmail());
-		TlvObject tTelephone = new TlvObject(5, account.getTelephone());
+		TlvObject tTelephone = new TlvObject(5, account.getPhone());
 
 		TlvObject tlv = new TlvObject(Command.SYNC_CONTACT_RESP);
 		tlv.push(tAccountId);
@@ -48,14 +48,14 @@ public class SyncContactResp
 		return tlv;
 	}
 
-	private AccountDetailInfo account;
+	private AccountMaster account;
 
-	public AccountDetailInfo getAccount()
+	public AccountMaster getAccount()
 	{
 		return account;
 	}
 
-	public void setAccount(AccountDetailInfo account)
+	public void setAccount(AccountMaster account)
 	{
 		this.account = account;
 	}

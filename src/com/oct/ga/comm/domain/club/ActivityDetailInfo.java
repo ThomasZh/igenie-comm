@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.google.gson.Gson;
 import com.oct.ga.comm.GlobalArgs;
-import com.oct.ga.comm.domain.account.AccountMasterInfo;
+import com.oct.ga.comm.domain.account.AccountBasic;
 import com.oct.ga.comm.domain.task.TaskMasterInfo;
 
 public class ActivityDetailInfo
@@ -29,7 +29,7 @@ public class ActivityDetailInfo
 	 * yes:1, no:0
 	 */
 	private short applyFormType = GlobalArgs.FALSE;
-	private List<AccountMasterInfo> members;
+	private List<AccountBasic> members;
 	private List<ActivityRecommend> recommends;
 
 	public ActivityDetailInfo decode(String json)
@@ -72,12 +72,12 @@ public class ActivityDetailInfo
 		this.recommends = recommends;
 	}
 
-	public List<AccountMasterInfo> getMembers()
+	public List<AccountBasic> getMembers()
 	{
 		return members;
 	}
 
-	public void setMembers(List<AccountMasterInfo> members)
+	public void setMembers(List<AccountBasic> members)
 	{
 		this.members = members;
 	}

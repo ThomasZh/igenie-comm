@@ -31,7 +31,6 @@ import com.oct.ga.comm.cmd.auth.LoginResp;
 import com.oct.ga.comm.cmd.auth.PhoneRegisterLoginResp;
 import com.oct.ga.comm.cmd.auth.RegisterLoginReq;
 import com.oct.ga.comm.cmd.auth.RegisterLoginResp;
-import com.oct.ga.comm.cmd.auth.RegisterResp;
 import com.oct.ga.comm.cmd.auth.STP_ACF;
 import com.oct.ga.comm.cmd.auth.SsoLoginResp;
 import com.oct.ga.comm.cmd.badgenum.BadgeNumQueryResp;
@@ -282,8 +281,6 @@ public abstract class CommandParser
 			return new FollowingResp().decode(tlv);// lwz7512@2014/11/03
 		case Command.QUERY_ACCOUNT_RESP:
 			return new QueryAccountResp().decode(tlv);// lwz7512@2014/11/05
-		case Command.REGISTER_RESP:
-			return new RegisterResp().decode(tlv);// lwz7512/2014/11/27
 		case Command.CHANGE_PASSWORD_RESP:
 			return new ChangePasswordResp().decode(tlv);
 		case Command.SYNC_FOLLOWING_RESP:

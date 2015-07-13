@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import com.oct.ga.comm.cmd.Command;
 import com.oct.ga.comm.cmd.RespCommand;
-import com.oct.ga.comm.domain.account.AccountDetailInfo;
+import com.oct.ga.comm.domain.account.AccountMaster;
 import com.oct.ga.comm.tlv.TlvByteUtil;
 import com.oct.ga.comm.tlv.TlvObject;
 
@@ -19,7 +19,7 @@ public class ImportFollowingResp
 		this.setTag(Command.IMPORT_FOLLOWING_RESP);
 	}
 
-	public ImportFollowingResp(short state, AccountDetailInfo account)
+	public ImportFollowingResp(short state, AccountMaster account)
 	{
 		this();
 
@@ -33,11 +33,11 @@ public class ImportFollowingResp
 	{
 		TlvObject tSequence = new TlvObject(1, 4, TlvByteUtil.int2Byte(sequence));
 		TlvObject tResultFlag = new TlvObject(2, 2, TlvByteUtil.short2Byte(this.getRespState()));
-		TlvObject tAccountId = new TlvObject(3, account.getId());
-		TlvObject tFirstname = new TlvObject(4, account.getName());
-		TlvObject tFacePhoto = new TlvObject(5, account.getImageUrl());
+		TlvObject tAccountId = new TlvObject(3, account.getAccountId());
+		TlvObject tFirstname = new TlvObject(4, account.getNickname());
+		TlvObject tFacePhoto = new TlvObject(5, account.getAvatarUrl());
 		TlvObject tEmail = new TlvObject(6, account.getEmail());
-		TlvObject tTelephone = new TlvObject(7, account.getTelephone());
+		TlvObject tTelephone = new TlvObject(7, account.getPhone());
 
 		TlvObject tlv = new TlvObject(Command.IMPORT_FOLLOWING_RESP);
 		tlv.push(tSequence);
@@ -54,14 +54,14 @@ public class ImportFollowingResp
 		return tlv;
 	}
 
-	private AccountDetailInfo account;
+	private AccountMaster account;
 
-	public AccountDetailInfo getAccount()
+	public AccountMaster getAccount()
 	{
 		return account;
 	}
 
-	public void setAccount(AccountDetailInfo account)
+	public void setAccount(AccountMaster account)
 	{
 		this.account = account;
 	}

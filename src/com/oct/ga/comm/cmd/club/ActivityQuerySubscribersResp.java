@@ -10,7 +10,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.oct.ga.comm.cmd.Command;
 import com.oct.ga.comm.cmd.RespCommand;
-import com.oct.ga.comm.domain.account.AccountMasterInfo;
+import com.oct.ga.comm.domain.account.AccountBasic;
 import com.oct.ga.comm.tlv.TlvByteUtil;
 import com.oct.ga.comm.tlv.TlvObject;
 import com.oct.ga.comm.tlv.TlvParser;
@@ -23,7 +23,7 @@ public class ActivityQuerySubscribersResp
 		this.setTag(Command.ACTIVITY_QUERY_SUBSCRIBERS_RESP);
 	}
 
-	public ActivityQuerySubscribersResp(short respState, List<AccountMasterInfo> memberList)
+	public ActivityQuerySubscribersResp(short respState, List<AccountBasic> memberList)
 	{
 		this();
 
@@ -31,7 +31,7 @@ public class ActivityQuerySubscribersResp
 		this.setMemberList(memberList);
 	}
 
-	public ActivityQuerySubscribersResp(int sequence, short respState, List<AccountMasterInfo> memberList)
+	public ActivityQuerySubscribersResp(int sequence, short respState, List<AccountBasic> memberList)
 	{
 		this(respState, memberList);
 
@@ -63,7 +63,7 @@ public class ActivityQuerySubscribersResp
 
 		if (json != null) {
 			Gson gson = new Gson();
-			memberList = gson.fromJson(json, new TypeToken<List<AccountMasterInfo>>()
+			memberList = gson.fromJson(json, new TypeToken<List<AccountBasic>>()
 			{
 			}.getType());
 		}
@@ -100,14 +100,14 @@ public class ActivityQuerySubscribersResp
 		return tlv;
 	}
 
-	private List<AccountMasterInfo> memberList;
+	private List<AccountBasic> memberList;
 
-	public List<AccountMasterInfo> getMemberList()
+	public List<AccountBasic> getMemberList()
 	{
 		return memberList;
 	}
 
-	public void setMemberList(List<AccountMasterInfo> memberList)
+	public void setMemberList(List<AccountBasic> memberList)
 	{
 		this.memberList = memberList;
 	}
