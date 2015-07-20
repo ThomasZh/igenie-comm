@@ -27,7 +27,7 @@ public class SsoLoginReq
 	{
 		this.setTag(tlv.getTag());
 
-		int childCount = 10;
+		int childCount = 11;
 		logger.debug("from tlv:(tag=" + this.getTag() + ", child=" + childCount + ") to command");
 		TlvParser.decodeChildren(tlv, childCount);
 
@@ -73,6 +73,10 @@ public class SsoLoginReq
 		apnsToken = new String(tApnsToken.getValue(), "UTF-8");
 		logger.debug("apnsToken: " + apnsToken);
 
+		TlvObject tLang = tlv.getChild(i++);
+		lang = new String(tLang.getValue(), "UTF-8");
+		logger.debug("lang: " + lang);
+
 		return this;
 	}
 
@@ -92,6 +96,7 @@ public class SsoLoginReq
 		TlvObject tLoginName = new TlvObject(i++, loginName);
 		TlvObject tImageUrl = new TlvObject(i++, imageUrl);
 		TlvObject tApnsToken = new TlvObject(i++, apnsToken);
+		TlvObject tLang = new TlvObject(i++, lang);
 
 		TlvObject tlv = new TlvObject(this.getTag());
 		tlv.push(tSequence);
@@ -104,6 +109,7 @@ public class SsoLoginReq
 		tlv.push(tLoginName);
 		tlv.push(tImageUrl);
 		tlv.push(tApnsToken);
+		tlv.push(tLang);
 
 		logger.debug("from command to tlv package:(tag=" + this.getTag() + ", child=" + i + ", length="
 				+ tlv.getLength() + ")");
@@ -120,6 +126,7 @@ public class SsoLoginReq
 	private String loginName;
 	private String imageUrl;
 	private String apnsToken;
+	private String lang;
 
 	public short getLoginType()
 	{
@@ -209,6 +216,16 @@ public class SsoLoginReq
 	public void setDesc(String desc)
 	{
 		this.desc = desc;
+	}
+
+	public String getLang()
+	{
+		return lang;
+	}
+
+	public void setLang(String lang)
+	{
+		this.lang = lang;
 	}
 
 	private final static Logger logger = LoggerFactory.getLogger(SsoLoginReq.class);

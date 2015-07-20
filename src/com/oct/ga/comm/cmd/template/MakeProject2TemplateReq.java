@@ -25,23 +25,48 @@ public class MakeProject2TemplateReq
 	public MakeProject2TemplateReq decode(TlvObject tlv)
 			throws UnsupportedEncodingException
 	{
-		logger.info("from tlv:(tag=" + Command.MAKE_PROJECT_TO_TEMPLATE_REQ + ", child=2) to command");
+		this.setTag(tlv.getTag());
 
-		TlvParser.decodeChildren(tlv, 3);
+		int childCount = 3;
+		logger.debug("from tlv:(tag=" + this.getTag() + ", child=" + childCount + ") to command");
+		TlvParser.decodeChildren(tlv, childCount);
 
-		TlvObject tSequence = tlv.getChild(0);
+		int i = 0;
+
+		TlvObject tSequence = tlv.getChild(i++);
 		sequence = TlvByteUtil.byte2Int(tSequence.getValue());
 		logger.debug("sequence: " + sequence);
 
-		TlvObject tTaskId = tlv.getChild(1);
+		TlvObject tTaskId = tlv.getChild(i++);
 		taskId = new String(tTaskId.getValue(), "UTF-8");
 		logger.debug("taskId: " + taskId);
 
-		TlvObject tTemplateName = tlv.getChild(2);
+		TlvObject tTemplateName = tlv.getChild(i++);
 		templateName = new String(tTemplateName.getValue(), "UTF-8");
 		logger.debug("templateName: " + templateName);
 
 		return this;
+	}
+
+	@Override
+	public TlvObject encode()
+			throws UnsupportedEncodingException
+	{
+		int i = 0;
+
+		TlvObject tSequence = new TlvObject(i++, 4, TlvByteUtil.int2Byte(sequence));
+		TlvObject tTaskId = new TlvObject(i++, taskId);
+		TlvObject tTemplateName = new TlvObject(i++, templateName);
+
+		TlvObject tlv = new TlvObject(this.getTag());
+		tlv.push(tSequence);
+		tlv.push(tTaskId);
+		tlv.push(tTemplateName);
+
+		logger.debug("from command to tlv package:(tag=" + this.getTag() + ", child=" + i + ", length="
+				+ tlv.getLength() + ")");
+
+		return tlv;
 	}
 
 	private String taskId;

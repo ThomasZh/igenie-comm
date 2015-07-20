@@ -11,23 +11,23 @@ import com.oct.ga.comm.tlv.TlvByteUtil;
 import com.oct.ga.comm.tlv.TlvObject;
 import com.oct.ga.comm.tlv.TlvParser;
 
-public class RegisterLoginReq
+public class DeviceRegisterLoginReq
 		extends ReqCommand
 {
-	public RegisterLoginReq()
+	public DeviceRegisterLoginReq()
 	{
 		super();
 
-		this.setTag(Command.REGISTER_LOGIN_REQ);
+		this.setTag(Command.DEVICE_REGISTER_LOGIN_REQ);
 	}
 
 	@Override
-	public RegisterLoginReq decode(TlvObject tlv)
+	public DeviceRegisterLoginReq decode(TlvObject tlv)
 			throws UnsupportedEncodingException
 	{
 		this.setTag(tlv.getTag());
 
-		int childCount = 11;
+		int childCount = 6;
 		logger.debug("from tlv:(tag=" + this.getTag() + ", child=" + childCount + ") to command");
 		TlvParser.decodeChildren(tlv, childCount);
 
@@ -48,25 +48,6 @@ public class RegisterLoginReq
 		TlvObject tDeviceId = tlv.getChild(i++);
 		deviceId = new String(tDeviceId.getValue(), "UTF-8");
 		logger.debug("deviceId: " + deviceId);
-
-		TlvObject tFirstName = tlv.getChild(i++);
-		firstName = new String(tFirstName.getValue(), "UTF-8");
-		logger.debug("firstName: " + firstName);
-
-		TlvObject tLastName = tlv.getChild(i++);
-		lastName = new String(tLastName.getValue(), "UTF-8");
-		logger.debug("lastname: " + lastName);
-
-		TlvObject tEmail = tlv.getChild(i++);
-		email = new String(tEmail.getValue(), "UTF-8");
-		logger.debug("email: " + email);
-
-		TlvObject tPassword = tlv.getChild(i++);
-		md5pwd = new String(tPassword.getValue(), "UTF-8");
-
-		TlvObject tFacePhoto = tlv.getChild(i++);
-		facePhoto = new String(tFacePhoto.getValue(), "UTF-8");
-		logger.debug("facePhoto: " + facePhoto);
 
 		TlvObject tApnsToken = tlv.getChild(i++);
 		apnsToken = new String(tApnsToken.getValue(), "UTF-8");
@@ -89,11 +70,6 @@ public class RegisterLoginReq
 		TlvObject tOsVersion = new TlvObject(i++, osVersion);
 		TlvObject tGateToken = new TlvObject(i++, gateToken);
 		TlvObject tDeviceId = new TlvObject(i++, deviceId);
-		TlvObject tFirstName = new TlvObject(i++, firstName);
-		TlvObject tLastName = new TlvObject(i++, lastName);
-		TlvObject tEmail = new TlvObject(i++, email);
-		TlvObject tPassword = new TlvObject(i++, md5pwd);
-		TlvObject tFacePhoto = new TlvObject(i++, facePhoto);
 		TlvObject tApnsToken = new TlvObject(i++, apnsToken);
 		TlvObject tLang = new TlvObject(i++, lang);
 
@@ -102,11 +78,6 @@ public class RegisterLoginReq
 		tlv.push(tOsVersion);
 		tlv.push(tGateToken);
 		tlv.push(tDeviceId);
-		tlv.push(tFirstName);
-		tlv.push(tLastName);
-		tlv.push(tEmail);
-		tlv.push(tPassword);
-		tlv.push(tFacePhoto);
 		tlv.push(tApnsToken);
 		tlv.push(tLang);
 
@@ -119,11 +90,6 @@ public class RegisterLoginReq
 	private String osVersion;
 	private String gateToken;
 	private String deviceId;
-	private String firstName;
-	private String lastName;
-	private String email;
-	private String md5pwd;
-	private String facePhoto;
 	private String apnsToken;
 	private String lang;
 
@@ -157,56 +123,6 @@ public class RegisterLoginReq
 		this.deviceId = deviceId;
 	}
 
-	public String getFirstName()
-	{
-		return firstName;
-	}
-
-	public void setFirstName(String firstName)
-	{
-		this.firstName = firstName;
-	}
-
-	public String getLastName()
-	{
-		return lastName;
-	}
-
-	public void setLastName(String lastName)
-	{
-		this.lastName = lastName;
-	}
-
-	public String getEmail()
-	{
-		return email;
-	}
-
-	public void setEmail(String email)
-	{
-		this.email = email;
-	}
-
-	public String getMd5pwd()
-	{
-		return md5pwd;
-	}
-
-	public void setMd5pwd(String password)
-	{
-		this.md5pwd = password;
-	}
-
-	public String getFacePhoto()
-	{
-		return facePhoto;
-	}
-
-	public void setFacePhoto(String facePhoto)
-	{
-		this.facePhoto = facePhoto;
-	}
-
 	public String getApnsToken()
 	{
 		return apnsToken;
@@ -227,6 +143,6 @@ public class RegisterLoginReq
 		this.lang = lang;
 	}
 
-	private final static Logger logger = LoggerFactory.getLogger(RegisterLoginReq.class);
+	private final static Logger logger = LoggerFactory.getLogger(DeviceRegisterLoginReq.class);
 
 }

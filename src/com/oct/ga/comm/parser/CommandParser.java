@@ -26,6 +26,7 @@ import com.oct.ga.comm.cmd.apply.ApplyStateNotify;
 import com.oct.ga.comm.cmd.apply.ModifyApproveStateResp;
 import com.oct.ga.comm.cmd.apply.SyncApplyStateResp;
 import com.oct.ga.comm.cmd.appver.CheckVersionUpdateResp;
+import com.oct.ga.comm.cmd.auth.DeviceRegisterLoginResp;
 import com.oct.ga.comm.cmd.auth.HeartbitReq;
 import com.oct.ga.comm.cmd.auth.LoginResp;
 import com.oct.ga.comm.cmd.auth.PhoneRegisterLoginResp;
@@ -120,6 +121,9 @@ import com.oct.ga.comm.cmd.task.TaskMoveToResp;
 import com.oct.ga.comm.cmd.task.UpdateTaskStateResp;
 import com.oct.ga.comm.cmd.task.UploadTaskNoteResp;
 import com.oct.ga.comm.cmd.task.UploadTaskResp;
+import com.oct.ga.comm.cmd.template.MakeProject2TemplateResp;
+import com.oct.ga.comm.cmd.template.QueryTemplateDetailResp;
+import com.oct.ga.comm.cmd.template.QueryTemplateListPaginationResp;
 import com.oct.ga.comm.tlv.TlvObject;
 
 public abstract class CommandParser
@@ -332,6 +336,15 @@ public abstract class CommandParser
 		case Command.TASK_COPY_TO_RESP:
 			return new TaskCopyToResp().decode(tlv);
 
+			// /////////////////////////////////////////////////////////
+			// Template
+		case Command.QUERY_TEMPLATE_LIST_PAGINATION_RESP:
+			return new QueryTemplateListPaginationResp().decode(tlv);
+		case Command.QUERY_TEMPLATE_DETAIL_RESP:
+			return new QueryTemplateDetailResp().decode(tlv);
+		case Command.MAKE_PROJECT_TO_TEMPLATE_RESP:
+			return new MakeProject2TemplateResp().decode(tlv);
+
 		case Command.INVITE_RESP:
 			return new InviteResp().decode(tlv);
 		case Command.INVITE_CONFIRM_RECEIVED_RESP:
@@ -381,6 +394,8 @@ public abstract class CommandParser
 			return new BindPhoneResp().decode(tlv);
 		case Command.BIND_MARGE_PHONE_RESP:
 			return new BindMargePhoneResp().decode(tlv);
+		case Command.DEVICE_REGISTER_LOGIN_RESP:
+			return new DeviceRegisterLoginResp().decode(tlv);
 
 		default:
 			logger.warn("Unknow command tag: " + tlv.getTag());

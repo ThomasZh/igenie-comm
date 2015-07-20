@@ -21,11 +21,21 @@ public class ChangePasswordReq
 		this.setTag(Command.CHANGE_PASSWORD_REQ);
 	}
 
-	public ChangePasswordReq(String email, String oldPassword, String newPassword)
+	public ChangePasswordReq(String loginName, String oldPassword, String newPassword)
 	{
 		this();
 
-		this.setEmail(email);
+		this.setLoginName(loginName);
+		this.setNewPassword(newPassword);
+		this.setOldPassword(oldPassword);
+	}
+
+	public ChangePasswordReq(int sequence, String loginName, String oldPassword, String newPassword)
+	{
+		this();
+
+		this.setSequence(sequence);
+		this.setLoginName(loginName);
 		this.setNewPassword(newPassword);
 		this.setOldPassword(oldPassword);
 	}
@@ -45,9 +55,9 @@ public class ChangePasswordReq
 		this.setSequence(TlvByteUtil.byte2Int(tSequence.getValue()));
 		logger.debug("sequence: " + this.getSequence());
 
-		TlvObject tEmail = tlv.getChild(i++);
-		email = new String(tEmail.getValue(), "UTF-8");
-		logger.debug("email: " + email);
+		TlvObject tLoginName = tlv.getChild(i++);
+		loginName = new String(tLoginName.getValue(), "UTF-8");
+		logger.debug("loginName: " + loginName);
 
 		TlvObject tOldPassword = tlv.getChild(i++);
 		oldPassword = new String(tOldPassword.getValue(), "UTF-8");
@@ -65,13 +75,13 @@ public class ChangePasswordReq
 		int i = 0;
 
 		TlvObject tSequence = new TlvObject(i++, 4, TlvByteUtil.int2Byte(this.getSequence()));
-		TlvObject tEmail = new TlvObject(i++, this.getEmail());
+		TlvObject tLoginName = new TlvObject(i++, loginName);
 		TlvObject tOldPassword = new TlvObject(i++, oldPassword);
 		TlvObject tNewPassword = new TlvObject(i++, newPassword);
 
 		TlvObject tlv = new TlvObject(this.getTag());
 		tlv.push(tSequence);
-		tlv.push(tEmail);
+		tlv.push(tLoginName);
 		tlv.push(tOldPassword);
 		tlv.push(tNewPassword);
 
@@ -81,19 +91,9 @@ public class ChangePasswordReq
 		return tlv;
 	}
 
-	private String email;
+	private String loginName;
 	private String oldPassword;
 	private String newPassword;
-
-	public String getEmail()
-	{
-		return email;
-	}
-
-	public void setEmail(String email)
-	{
-		this.email = email;
-	}
 
 	public String getOldPassword()
 	{
@@ -113,6 +113,16 @@ public class ChangePasswordReq
 	public void setNewPassword(String newPassword)
 	{
 		this.newPassword = newPassword;
+	}
+
+	public String getLoginName()
+	{
+		return loginName;
+	}
+
+	public void setLoginName(String loginName)
+	{
+		this.loginName = loginName;
 	}
 
 	private final static Logger logger = LoggerFactory.getLogger(ChangePasswordReq.class);
