@@ -26,6 +26,8 @@ public class TaskProBaseInfo
 	private short memberNum = 0;
 	private short fileNum = 0;
 	private short noteNum = 0;
+	private String desc;
+	private int ver = 0;
 
 	@Override
 	public TaskProBaseInfo decode(String json)
@@ -197,6 +199,26 @@ public class TaskProBaseInfo
 	public void setMemberState(short memberState)
 	{
 		this.memberState = memberState;
+	}
+
+	public String getDesc()
+	{
+		return desc;
+	}
+
+	public void setDesc(String desc)
+	{
+		this.desc = desc;
+	}
+
+	public int getVer()
+	{
+		return ver;
+	}
+
+	public void setVer(int ver)
+	{
+		this.ver = ver;
 	}
 
 }

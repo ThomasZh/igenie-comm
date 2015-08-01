@@ -10,11 +10,8 @@ public class TaskProDetailInfo
 	 * 
 	 */
 	private static final long serialVersionUID = 7457900065882301529L;
-
-	private String desc;
 	private String extAttribute;
 	private String titleBkImage;
-	private int ver = 0;
 	private String locDesc;
 	private String locX;
 	private String locY;
@@ -81,16 +78,6 @@ public class TaskProDetailInfo
 		this.locY = locY;
 	}
 
-	public String getDesc()
-	{
-		return desc;
-	}
-
-	public void setDesc(String desc)
-	{
-		this.desc = desc;
-	}
-
 	public String getExtAttribute()
 	{
 		return extAttribute;
@@ -99,16 +86,6 @@ public class TaskProDetailInfo
 	public void setExtAttribute(String extAttribute)
 	{
 		this.extAttribute = extAttribute;
-	}
-
-	public int getVer()
-	{
-		return ver;
-	}
-
-	public void setVer(int infoVer)
-	{
-		this.ver = infoVer;
 	}
 
 	public String getTitleBkImage()

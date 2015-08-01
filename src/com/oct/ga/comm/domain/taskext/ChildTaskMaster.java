@@ -12,6 +12,7 @@ public class ChildTaskMaster
 
 	private int member;
 	private short rank;
+	private String desc;
 
 	@Override
 	public ChildTaskMaster decode(String json)
@@ -53,6 +54,16 @@ public class ChildTaskMaster
 	public void setRank(short rank)
 	{
 		this.rank = rank;
+	}
+
+	public String getDesc()
+	{
+		return desc;
+	}
+
+	public void setDesc(String desc)
+	{
+		this.desc = desc;
 	}
 
 }

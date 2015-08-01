@@ -11,7 +11,8 @@ import com.oct.ga.comm.tlv.TlvByteUtil;
 import com.oct.ga.comm.tlv.TlvObject;
 import com.oct.ga.comm.tlv.TlvParser;
 
-public class UploadTaskResp extends RespCommand
+public class UploadTaskResp
+		extends RespCommand
 {
 	public UploadTaskResp()
 	{
@@ -33,7 +34,9 @@ public class UploadTaskResp extends RespCommand
 	{
 		TlvObject tSequence = new TlvObject(1, 4, TlvByteUtil.int2Byte(sequence));
 		TlvObject tResultFlag = new TlvObject(2, 2, TlvByteUtil.short2Byte(this.getRespState()));
+		logger.debug("taskId: " + taskId);
 		TlvObject tTaskId = new TlvObject(3, this.getTaskId());
+		logger.debug("version: " + infoVer);
 		TlvObject tVersion = new TlvObject(4, 4, TlvByteUtil.int2Byte(infoVer));
 
 		TlvObject tlv = new TlvObject(Command.UPLOAD_TASK_RESP);
@@ -48,27 +51,30 @@ public class UploadTaskResp extends RespCommand
 		return tlv;
 	}
 
-    @Override
-    public UploadTaskResp decode(TlvObject tlv) throws UnsupportedEncodingException{
-        TlvParser.decodeChildren(tlv, 4);
+	@Override
+	public UploadTaskResp decode(TlvObject tlv)
+			throws UnsupportedEncodingException
+	{
+		TlvParser.decodeChildren(tlv, 4);
 
-        TlvObject tSequence = tlv.getChild(0);
-        this.setSequence(TlvByteUtil.byte2Int(tSequence.getValue()));
+		TlvObject tSequence = tlv.getChild(0);
+		this.setSequence(TlvByteUtil.byte2Int(tSequence.getValue()));
 
-        TlvObject tResultFlag = tlv.getChild(1);
-        this.setRespState(TlvByteUtil.byte2Short(tResultFlag.getValue()));
+		TlvObject tResultFlag = tlv.getChild(1);
+		this.setRespState(TlvByteUtil.byte2Short(tResultFlag.getValue()));
 
-        TlvObject tTaskId = tlv.getChild(2);
-        this.setTaskId(new String(tTaskId.getValue(), "UTF-8"));
+		TlvObject tTaskId = tlv.getChild(2);
+		taskId = new String(tTaskId.getValue(), "UTF-8");
+		logger.debug("taskId: " + taskId);
 
-        TlvObject tVersion = tlv.getChild(3);
-        this.setInfoVer(TlvByteUtil.byte2Short(tVersion.getValue()));
+		TlvObject tVersion = tlv.getChild(3);
+		infoVer = TlvByteUtil.byte2Int(tVersion.getValue());
+		logger.debug("version: " + infoVer);
 
-        return this;
-    }
+		return this;
+	}
 
-
-    private String taskId;
+	private String taskId;
 	private int infoVer;
 
 	public String getTaskId()
