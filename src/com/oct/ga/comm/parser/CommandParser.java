@@ -94,6 +94,7 @@ import com.oct.ga.comm.cmd.invite.QueryInvitedRegisterSemiIdResp;
 import com.oct.ga.comm.cmd.invite.SyncInviteResp;
 import com.oct.ga.comm.cmd.moment.AddMomentResp;
 import com.oct.ga.comm.cmd.moment.DeleteMomentResp;
+import com.oct.ga.comm.cmd.moment.QueryAllMomentsPaginationResp;
 import com.oct.ga.comm.cmd.moment.QueryMomentPaginationResp;
 import com.oct.ga.comm.cmd.moment.QueryMomentPhotoFlowPaginationResp;
 import com.oct.ga.comm.cmd.msg.ConfirmMessageReadResp;
@@ -280,6 +281,8 @@ public abstract class CommandParser
 			return new QueryMomentPaginationResp().decode(tlv);
 		case Command.DELETE_MOMENT_RESP:
 			return new DeleteMomentResp().decode(tlv);
+		case Command.QUERY_ALL_MOMENT_PAGINATION_RESP:
+			return new QueryAllMomentsPaginationResp().decode(tlv);
 
 		case Command.FOLLOWING_RESP:
 			return new FollowingResp().decode(tlv);// lwz7512@2014/11/03

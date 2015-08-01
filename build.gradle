@@ -6,7 +6,7 @@ loadConfiguration()
 def loadConfiguration() {
     def environment = hasProperty('env') ? env : 'dev'
     project.ext.set("environment", environment)
-    project.ext.set("distVersion", "3.12.4")//distribution version number
+    project.ext.set("distVersion", "3.12.5")//distribution version number
 }
 
 //----------------------------------
@@ -15,7 +15,7 @@ apply plugin: 'eclipse'
 apply plugin:'application'
 apply from: 'tasks.gradle'
 
-group = 'igeniestp'
+group = 'igenie-stp'
 version = project.distVersion
 mainClassName = "com.oct.ga.stp.StpServer"
 

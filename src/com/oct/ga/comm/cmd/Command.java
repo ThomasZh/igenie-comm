@@ -109,6 +109,8 @@ public interface Command
 	public static final short QUERY_CLUB_MOMENT_PHOTOFLOW_PAGINATION_RESP = 1118;
 	public static final short DELETE_MOMENT_REQ = 1119;
 	public static final short DELETE_MOMENT_RESP = 1120;
+	public static final short QUERY_ALL_MOMENT_PAGINATION_REQ = 1121;
+	public static final short QUERY_ALL_MOMENT_PAGINATION_RESP = 1122;
 
 	// ////////////////////////////////////////////////////////
 	// group: member
@@ -387,7 +389,7 @@ public interface Command
 	public static final short BIND_MARGE_PHONE_RESP = 6010;
 	public static final short DEVICE_REGISTER_LOGIN_REQ = 6011;
 	public static final short DEVICE_REGISTER_LOGIN_RESP = 6012;
-	
+
 	/**
 	 * handling the decoded java object, may be save in DB
 	 * 

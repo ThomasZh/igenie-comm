@@ -13,6 +13,7 @@ public class GaMomentObject
 	 */
 	private static final long serialVersionUID = 3067743932929217896L;
 	private String channelId;
+	private String channelName;
 	private String momentId;
 	private String userId;
 	private String userName;
@@ -121,6 +122,16 @@ public class GaMomentObject
 	public void setUserPhotoUrl(String userPhotoUrl)
 	{
 		this.userPhotoUrl = userPhotoUrl;
+	}
+
+	public String getChannelName()
+	{
+		return channelName;
+	}
+
+	public void setChannelName(String channelName)
+	{
+		this.channelName = channelName;
 	}
 
 }
