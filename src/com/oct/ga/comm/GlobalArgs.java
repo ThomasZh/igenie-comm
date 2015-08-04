@@ -113,6 +113,9 @@ public class GlobalArgs
 	public static final short TASK_ACTION_REMOVE_NOTE = 222;
 	public static final short TASK_ACTION_MOVTTO_PROJECT = 223;
 	public static final short TASK_ACTION_REMOVE_ATTACH = 224;
+	public static final short TASK_ACTION_CANCELED = 225;
+	public static final short TASK_ACTION_JOIN = 226;
+	public static final short TASK_ACTION_QUIT = 227;
 
 	public static final short TEMPLATE_TYPE_PROJECT = 301;
 	public static final short TEMPLATE_TYPE_TASK = 302;
@@ -145,6 +148,9 @@ public class GlobalArgs
 
 	public static final short CLUB_ACTIVITY_PUBLISH_TYPE_PRIVATE = 1211;
 	public static final short CLUB_ACTIVITY_PUBLISH_TYPE_PUBLIC = 1212;
+	public static final short CLUB_ACTIVITY_PUBLISH_TYPE_EXERCISE_1 = 1213;
+	public static final short CLUB_ACTIVITY_PUBLISH_TYPE_EXERCISE_2 = 1214;
+	public static final short CLUB_ACTIVITY_PUBLISH_TYPE_EXERCISE_3 = 1215;
 
 	// //////////////////////////////////////////////////////////////
 	// Version type

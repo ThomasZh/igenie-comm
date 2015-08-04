@@ -14,6 +14,7 @@ public class GaTaskLog
 	private String fromAccountId;
 	private short actionTag;
 	private String toActionId;
+	private int timestamp;
 
 	public String getLogId()
 	{
@@ -63,6 +64,16 @@ public class GaTaskLog
 	public void setToActionId(String toActionId)
 	{
 		this.toActionId = toActionId;
+	}
+
+	public int getTimestamp()
+	{
+		return timestamp;
+	}
+
+	public void setTimestamp(int timestamp)
+	{
+		this.timestamp = timestamp;
 	}
 
 }

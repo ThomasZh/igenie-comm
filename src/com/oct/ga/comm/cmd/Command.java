@@ -341,6 +341,11 @@ public interface Command
 	public static final short ACTIVITY_KICKOUT_MEMBER_RESP = 3072;
 
 	// ////////////////////////////////////////////////////////
+	// management for message flow
+	public static final short MESSAGE_FLOW_QUERY_PAGINATION_REQ = 3091;
+	public static final short MESSAGE_FLOW_QUERY_PAGINATION_RESP = 3092;
+
+	// ////////////////////////////////////////////////////////
 	// management for publish
 	public static final short PUBLISH_QUERY_LOC_HOT_PAGINATION_REQ = 3101;
 	public static final short PUBLISH_QUERY_LOC_HOT_PAGINATION_RESP = 3102;

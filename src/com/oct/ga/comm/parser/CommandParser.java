@@ -101,6 +101,7 @@ import com.oct.ga.comm.cmd.msg.ConfirmMessageReadResp;
 import com.oct.ga.comm.cmd.msg.QueryMessageBadgeNumberResp;
 import com.oct.ga.comm.cmd.msg.QueryMessagePaginationResp;
 import com.oct.ga.comm.cmd.msg.UploadMessageResp;
+import com.oct.ga.comm.cmd.msgflow.QueryMsgFlowPaginationResp;
 import com.oct.ga.comm.cmd.publish.ModifyPublishLocResp;
 import com.oct.ga.comm.cmd.publish.QueryLocHotResp;
 import com.oct.ga.comm.cmd.task.AddTaskMemberResp;
@@ -257,6 +258,9 @@ public abstract class CommandParser
 		case Command.ACTIVITY_KICKOUT_MEMBER_RESP:
 			return new KickoutMemberResp().decode(tlv);
 
+		case Command.MESSAGE_FLOW_QUERY_PAGINATION_RESP:
+			return new QueryMsgFlowPaginationResp().decode(tlv);
+			
 		case Command.PUBLISH_QUERY_LOC_HOT_PAGINATION_RESP:
 			return new QueryLocHotResp().decode(tlv);
 		case Command.PUBLISH_MODIFY_LOC_RESP:

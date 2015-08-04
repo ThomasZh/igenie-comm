@@ -1,4 +1,10 @@
 ======================================================================
+igenie-comm_v3.12.6											2015.8.2
+new feature:
+	1.add QueryMsgFlowPaginationReq command
+	1.add QueryMsgFlowPaginationResp command
+	
+======================================================================
 igenie-comm_v3.12.5											2015.8.1
 new feature:
 	1.add QueryAllMomentsPaginationReq command

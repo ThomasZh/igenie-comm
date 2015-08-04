@@ -1,4 +1,4 @@
 Manifest-Version: 1.0
 Implementation-Title: stp server
-Implementation-Version: 3.12.5
+Implementation-Version: 3.12.6
 
