@@ -21,6 +21,7 @@ public class GaMomentObject
 	private String desc;
 	private int timestamp;
 	private List<String> photos;
+	private short memberRank;
 
 	@Override
 	public GaMomentObject decode(String json)
@@ -132,6 +133,16 @@ public class GaMomentObject
 	public void setChannelName(String channelName)
 	{
 		this.channelName = channelName;
+	}
+
+	public short getMemberRank()
+	{
+		return memberRank;
+	}
+
+	public void setMemberRank(short memberRank)
+	{
+		this.memberRank = memberRank;
 	}
 
 }

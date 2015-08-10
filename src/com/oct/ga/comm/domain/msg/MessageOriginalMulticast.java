@@ -19,6 +19,7 @@ public class MessageOriginalMulticast
 	 */
 	private String fromAccountId;
 	private String fromAccountName;
+	private String fromAccountAvatarUrl;
 	/**
 	 * time(second) since 1970.1.1
 	 */
@@ -175,6 +176,16 @@ public class MessageOriginalMulticast
 	public void setChatId(String chatId)
 	{
 		this.chatId = chatId;
+	}
+
+	public String getFromAccountAvatarUrl()
+	{
+		return fromAccountAvatarUrl;
+	}
+
+	public void setFromAccountAvatarUrl(String fromAccountAvatarUrl)
+	{
+		this.fromAccountAvatarUrl = fromAccountAvatarUrl;
 	}
 
 }

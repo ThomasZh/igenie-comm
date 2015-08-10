@@ -116,6 +116,11 @@ public class GlobalArgs
 	public static final short TASK_ACTION_CANCELED = 225;
 	public static final short TASK_ACTION_JOIN = 226;
 	public static final short TASK_ACTION_QUIT = 227;
+	public static final short TASK_ACTION_RECOMMEND = 228;
+	public static final short TASK_ACTION_APPLY = 229;
+	public static final short TASK_ACTION_ACCEPT = 230;
+	public static final short TASK_ACTION_REJECT = 231;
+	public static final short TASK_ACTION_REFILL = 232;
 
 	public static final short TEMPLATE_TYPE_PROJECT = 301;
 	public static final short TEMPLATE_TYPE_TASK = 302;
@@ -145,6 +150,7 @@ public class GlobalArgs
 	public static final short CLUB_ACTIVITY_STATE_CANCELED = 1202;
 	public static final short CLUB_ACTIVITY_STATE_OPENING = 1203;
 	public static final short CLUB_ACTIVITY_STATE_COMING_SOON = 1204;
+	public static final short CLUB_ACTIVITY_STATE_NOT_EXIST = 1205;
 
 	public static final short CLUB_ACTIVITY_PUBLISH_TYPE_PRIVATE = 1211;
 	public static final short CLUB_ACTIVITY_PUBLISH_TYPE_PUBLIC = 1212;
@@ -183,6 +189,7 @@ public class GlobalArgs
 	public static final short SUP_TYPE_DEVICE_SERVER = 1703;
 	public static final short SUP_TYPE_MAIL_SERVER = 1704;
 	public static final short SUP_TYPE_SMS_SERVER = 1705;
+	public static final short SUP_TYPE_MESSAGE_SERVER = 1706;
 
 	public static final short VERIFICATION_TYPE_PHONE_REGISTER = 1801;
 	public static final short VERIFICATION_TYPE_PHONE_LOST_PWD = 1802;
@@ -192,6 +199,13 @@ public class GlobalArgs
 	// //////////////////////////////////////////////////////////////
 	// comm
 	public static final String ID_DEFAULT_NONE = "00000000-0000-0000-0000-000000000000";
+	public static final String SUPPORT_SERVICE_EMAIL = "support@planc2c.com";
+	public static final String SUPPORT_SERVICE_ACCOUNT_ID = "930d76db-47a4-43df-9bce-123efafd49b0";
 	public static final int BUFFER_SIZE = 16384; // 16k
+	public static final String UPYUN_DEFAULT_URL = "http://tripc2c-default.b0.upaiyun.com";
+	public static final String UPYUN_FACE_PHOTO_URL = "http://tripc2c-person-face.b0.upaiyun.com";
+	public static final String UPYUN_PROJECT_PIC_URL = "http://tripc2c-project-pic.b0.upaiyun.com";
+	public static final String UPYUN_CLUB_TITLE_URL = "http://tripc2c-club-title.b0.upaiyun.com";
+	public static final String UPYUN_THUMB_NAIL = "!200x200";
 
 }

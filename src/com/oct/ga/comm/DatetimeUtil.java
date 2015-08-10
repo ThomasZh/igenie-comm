@@ -1,6 +1,7 @@
 package com.oct.ga.comm;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class DatetimeUtil
 {
@@ -24,6 +25,13 @@ public class DatetimeUtil
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 		java.util.Date date = new java.util.Date((long) timestamp * 1000);
 		String str = sdf.format(date);
+		return str;
+	}
+	
+	public static String today2Str()
+	{
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/M/d");
+		String str = sdf.format(new Date());
 		return str;
 	}
 }
