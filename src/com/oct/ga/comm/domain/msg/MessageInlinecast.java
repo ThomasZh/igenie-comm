@@ -1,32 +1,8 @@
 package com.oct.ga.comm.domain.msg;
 
-import com.google.gson.Gson;
-
 public class MessageInlinecast
 		extends MessageExtendUnicast
 {
-	@Override
-	public MessageInlinecast decode(String json)
-	{
-		Gson gson = new Gson();
-		MessageInlinecast info = gson.fromJson(json, MessageInlinecast.class);
-		return info;
-	}
-
-	@Override
-	public String encode()
-	{
-		Gson gson = new Gson();
-		String json = gson.toJson(this);
-		return json;
-	}
-
-	@Override
-	public String toString()
-	{
-		return this.encode();
-	}
-
 	public MessageInlinecast clone()
 			throws CloneNotSupportedException
 	{

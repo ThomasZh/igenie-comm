@@ -1,6 +1,5 @@
 package com.oct.ga.comm.domain.msg;
 
-import com.google.gson.Gson;
 import com.oct.ga.comm.GlobalArgs;
 
 public class MessageExtendUnicast
@@ -25,29 +24,6 @@ public class MessageExtendUnicast
 	 */
 	private String toAccountId;
 	private String toAccountName;
-	private String fromAccountAvatarUrl;
-
-	@Override
-	public MessageExtendUnicast decode(String json)
-	{
-		Gson gson = new Gson();
-		MessageExtendUnicast info = gson.fromJson(json, MessageExtendUnicast.class);
-		return info;
-	}
-
-	@Override
-	public String encode()
-	{
-		Gson gson = new Gson();
-		String json = gson.toJson(this);
-		return json;
-	}
-
-	@Override
-	public String toString()
-	{
-		return this.encode();
-	}
 
 	public short getSyncState()
 	{
@@ -77,16 +53,6 @@ public class MessageExtendUnicast
 	public void setToAccountName(String toAccountName)
 	{
 		this.toAccountName = toAccountName;
-	}
-
-	public String getFromAccountAvatarUrl()
-	{
-		return fromAccountAvatarUrl;
-	}
-
-	public void setFromAccountAvatarUrl(String fromAccountAvatarUrl)
-	{
-		this.fromAccountAvatarUrl = fromAccountAvatarUrl;
 	}
 
 }

@@ -1,7 +1,5 @@
 package com.oct.ga.comm.domain.msg;
 
-import com.google.gson.Gson;
-
 public class Invite
 		extends MessageInlinecast
 {
@@ -21,28 +19,6 @@ public class Invite
 	 * ����taskdesc
 	 */
 	private String attachDesc;
-
-	@Override
-	public Invite decode(String json)
-	{
-		Gson gson = new Gson();
-		Invite info = gson.fromJson(json, Invite.class);
-		return info;
-	}
-
-	@Override
-	public String encode()
-	{
-		Gson gson = new Gson();
-		String json = gson.toJson(this);
-		return json;
-	}
-
-	@Override
-	public String toString()
-	{
-		return this.encode();
-	}
 
 	public String getSrcInviteId()
 	{

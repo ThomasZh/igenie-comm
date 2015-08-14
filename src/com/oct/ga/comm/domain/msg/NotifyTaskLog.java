@@ -1,7 +1,5 @@
 package com.oct.ga.comm.domain.msg;
 
-import com.google.gson.Gson;
-
 public class NotifyTaskLog
 		extends Notify
 {
@@ -18,28 +16,6 @@ public class NotifyTaskLog
 	 * 121:apply,122: Accept,123: Reject
 	 */
 	private short activityState;
-
-	@Override
-	public NotifyTaskLog decode(String json)
-	{
-		Gson gson = new Gson();
-		NotifyTaskLog info = gson.fromJson(json, NotifyTaskLog.class);
-		return info;
-	}
-
-	@Override
-	public String encode()
-	{
-		Gson gson = new Gson();
-		String json = gson.toJson(this);
-		return json;
-	}
-
-	@Override
-	public String toString()
-	{
-		return this.encode();
-	}
 
 	public NotifyTaskLog copy()
 	{
