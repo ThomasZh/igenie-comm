@@ -1,4 +1,9 @@
 ======================================================================
+igenie-comm_v3.12.10										2015.8.19
+fix bug:
+	1.add MsgBasicInfo as basic interface of all message class.
+	
+======================================================================
 igenie-comm_v3.12.9											2015.8.10
 new feature:
 	1.add today2Str util
