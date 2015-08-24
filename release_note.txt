@@ -1,7 +1,13 @@
 ======================================================================
-igenie-comm_v3.12.10										2015.8.19
-fix bug:
-	1.add MsgBasicInfo as basic interface of all message class.
+igenie-comm_v3.13.0											2015.8.21
+new feature:
+	1.add moment comment command class.
+	2.add moment favorite command class.
+	3.query moment comment pagination command class.
+	4.query moment favorite pagination command class.
+	5.change query moment pagination command class.
+		add commentNum & favoriteNum in it;
+		add comments & favorites in it
 	
 ======================================================================
 igenie-comm_v3.12.9											2015.8.10

@@ -12,7 +12,7 @@ import com.oct.ga.comm.tlv.TlvObject;
 import com.oct.ga.comm.tlv.TlvParser;
 
 /**
- * query my subscribe future(start>today) activities by pagination.
+ * query my subscribe future(start>today) logs by pagination.
  * 
  * @author thomas
  * 

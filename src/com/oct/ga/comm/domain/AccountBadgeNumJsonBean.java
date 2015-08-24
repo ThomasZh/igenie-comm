@@ -14,6 +14,7 @@ public class AccountBadgeNumJsonBean
 	private short taskLogNum;
 	private short inviteNum;
 	private short applyNum;
+	private short momentLogNum;
 
 	public short getMessageNum()
 	{
@@ -53,6 +54,16 @@ public class AccountBadgeNumJsonBean
 	public void setApplyNum(short applyNum)
 	{
 		this.applyNum = applyNum;
+	}
+
+	public short getMomentLogNum()
+	{
+		return momentLogNum;
+	}
+
+	public void setMomentLogNum(short momentLogNum)
+	{
+		this.momentLogNum = momentLogNum;
 	}
 
 }

@@ -121,6 +121,8 @@ public class GlobalArgs
 	public static final short TASK_ACTION_ACCEPT = 230;
 	public static final short TASK_ACTION_REJECT = 231;
 	public static final short TASK_ACTION_REFILL = 232;
+	public static final short TASK_ACTION_MOMENT_FAVORITE = 233;
+	public static final short TASK_ACTION_MOMENT_COMMENT = 234;
 
 	public static final short TEMPLATE_TYPE_PROJECT = 301;
 	public static final short TEMPLATE_TYPE_TASK = 302;

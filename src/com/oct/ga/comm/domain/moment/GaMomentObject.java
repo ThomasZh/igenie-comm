@@ -22,7 +22,12 @@ public class GaMomentObject
 	private int timestamp;
 	private List<String> photos;
 	private short memberRank;
-
+	private List<GaMomentCommentObject> comments;
+	private List<GaMomentFavoriteObject> favorites;
+	private int favoriteNum;
+	private int commentNum;
+	private boolean isFavorite;
+	
 	@Override
 	public GaMomentObject decode(String json)
 	{
@@ -143,6 +148,56 @@ public class GaMomentObject
 	public void setMemberRank(short memberRank)
 	{
 		this.memberRank = memberRank;
+	}
+
+	public List<GaMomentCommentObject> getComments()
+	{
+		return comments;
+	}
+
+	public void setComments(List<GaMomentCommentObject> comments)
+	{
+		this.comments = comments;
+	}
+
+	public List<GaMomentFavoriteObject> getFavorites()
+	{
+		return favorites;
+	}
+
+	public void setFavorites(List<GaMomentFavoriteObject> favorites)
+	{
+		this.favorites = favorites;
+	}
+
+	public int getFavoriteNum()
+	{
+		return favoriteNum;
+	}
+
+	public void setFavoriteNum(int favoriteNum)
+	{
+		this.favoriteNum = favoriteNum;
+	}
+
+	public int getCommentNum()
+	{
+		return commentNum;
+	}
+
+	public void setCommentNum(int commentNum)
+	{
+		this.commentNum = commentNum;
+	}
+
+	public boolean isFavorite()
+	{
+		return isFavorite;
+	}
+
+	public void setFavorite(boolean isFavorite)
+	{
+		this.isFavorite = isFavorite;
 	}
 
 }

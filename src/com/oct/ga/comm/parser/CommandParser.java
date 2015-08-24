@@ -92,9 +92,14 @@ import com.oct.ga.comm.cmd.invite.InviteFeedbackResp;
 import com.oct.ga.comm.cmd.invite.InviteResp;
 import com.oct.ga.comm.cmd.invite.QueryInvitedRegisterSemiIdResp;
 import com.oct.ga.comm.cmd.invite.SyncInviteResp;
+import com.oct.ga.comm.cmd.moment.AddCommentMomentResp;
+import com.oct.ga.comm.cmd.moment.AddFavoriteMomentResp;
 import com.oct.ga.comm.cmd.moment.AddMomentResp;
 import com.oct.ga.comm.cmd.moment.DeleteMomentResp;
 import com.oct.ga.comm.cmd.moment.QueryAllMomentsPaginationResp;
+import com.oct.ga.comm.cmd.moment.QueryMomentCommentPaginationResp;
+import com.oct.ga.comm.cmd.moment.QueryMomentFavoritePaginationResp;
+import com.oct.ga.comm.cmd.moment.QueryMomentLogPaginationResp;
 import com.oct.ga.comm.cmd.moment.QueryMomentPaginationResp;
 import com.oct.ga.comm.cmd.moment.QueryMomentPhotoFlowPaginationResp;
 import com.oct.ga.comm.cmd.msg.ConfirmMessageReadResp;
@@ -260,7 +265,7 @@ public abstract class CommandParser
 
 		case Command.MESSAGE_FLOW_QUERY_PAGINATION_RESP:
 			return new QueryMsgFlowPaginationResp().decode(tlv);
-			
+
 		case Command.PUBLISH_QUERY_LOC_HOT_PAGINATION_RESP:
 			return new QueryLocHotResp().decode(tlv);
 		case Command.PUBLISH_MODIFY_LOC_RESP:
@@ -287,6 +292,16 @@ public abstract class CommandParser
 			return new DeleteMomentResp().decode(tlv);
 		case Command.QUERY_ALL_MOMENT_PAGINATION_RESP:
 			return new QueryAllMomentsPaginationResp().decode(tlv);
+		case Command.ADD_MOMENT_FAVORITE_RESP:
+			return new AddCommentMomentResp().decode(tlv);
+		case Command.ADD_MOMENT_COMMENT_RESP:
+			return new AddFavoriteMomentResp().decode(tlv);
+		case Command.QUERY_MOMENT_FAVORITE_PAGINATION_RESP:
+			return new QueryMomentFavoritePaginationResp().decode(tlv);
+		case Command.QUERY_MOMENT_COMMENT_PAGINATION_RESP:
+			return new QueryMomentCommentPaginationResp().decode(tlv);
+		case Command.QUERY_MOMENT_LOG_PAGINATION_RESP:
+			return new QueryMomentLogPaginationResp().decode(tlv);
 
 		case Command.FOLLOWING_RESP:
 			return new FollowingResp().decode(tlv);// lwz7512@2014/11/03

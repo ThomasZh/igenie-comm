@@ -111,6 +111,16 @@ public interface Command
 	public static final short DELETE_MOMENT_RESP = 1120;
 	public static final short QUERY_ALL_MOMENT_PAGINATION_REQ = 1121;
 	public static final short QUERY_ALL_MOMENT_PAGINATION_RESP = 1122;
+	public static final short ADD_MOMENT_FAVORITE_REQ = 1123;
+	public static final short ADD_MOMENT_FAVORITE_RESP = 1124;
+	public static final short ADD_MOMENT_COMMENT_REQ = 1125;
+	public static final short ADD_MOMENT_COMMENT_RESP = 1126;
+	public static final short QUERY_MOMENT_FAVORITE_PAGINATION_REQ = 1127;
+	public static final short QUERY_MOMENT_FAVORITE_PAGINATION_RESP = 1128;
+	public static final short QUERY_MOMENT_COMMENT_PAGINATION_REQ = 1129;
+	public static final short QUERY_MOMENT_COMMENT_PAGINATION_RESP = 1130;
+	public static final short QUERY_MOMENT_LOG_PAGINATION_REQ = 1131;
+	public static final short QUERY_MOMENT_LOG_PAGINATION_RESP = 1132;
 
 	// ////////////////////////////////////////////////////////
 	// group: member
