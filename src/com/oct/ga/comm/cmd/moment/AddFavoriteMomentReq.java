@@ -25,7 +25,7 @@ public class AddFavoriteMomentReq
 	{
 		this();
 
-		this.momentId = momentId;
+		this.setMomentId(momentId);
 	}
 
 	public AddFavoriteMomentReq(int sequence, String momentId)

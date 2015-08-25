@@ -49,6 +49,7 @@ public class QueryAllMomentsPaginationResp
 		if (moments != null) {
 			Gson gson = new Gson();
 			String json = gson.toJson(moments);
+			logger.debug("json: " + json);
 			tJson = new TlvObject(i++, json);
 		} else {
 			tJson = new TlvObject(i++, "");
@@ -59,7 +60,7 @@ public class QueryAllMomentsPaginationResp
 		tlv.push(tResultFlag);
 		tlv.push(tJson);
 
-		logger.debug("from command to tlv package:(tag=" + this.getTag() + ", child=" + i + ", length="
+		logger.info("from command to tlv package:(tag=" + this.getTag() + ", child=" + i + ", length="
 				+ tlv.getLength() + ")");
 
 		return tlv;
@@ -72,7 +73,7 @@ public class QueryAllMomentsPaginationResp
 		this.setTag(tlv.getTag());
 
 		int childCount = 3;
-		logger.debug("from tlv:(tag=" + this.getTag() + ", child=" + childCount + ") to command");
+		logger.info("from tlv:(tag=" + this.getTag() + ", child=" + childCount + ") to command");
 		TlvParser.decodeChildren(tlv, childCount);
 
 		int i = 0;
@@ -91,6 +92,7 @@ public class QueryAllMomentsPaginationResp
 			{
 			}.getType());
 		}
+		logger.debug("json: " + json);
 
 		return this;
 	}

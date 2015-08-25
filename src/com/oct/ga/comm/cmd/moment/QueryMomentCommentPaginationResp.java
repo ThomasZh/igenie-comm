@@ -20,7 +20,7 @@ public class QueryMomentCommentPaginationResp
 {
 	public QueryMomentCommentPaginationResp()
 	{
-		this.setTag(Command.QUERY_MOMENT_COMMENT_PAGINATION_REQ);
+		this.setTag(Command.QUERY_MOMENT_COMMENT_PAGINATION_RESP);
 	}
 
 	public QueryMomentCommentPaginationResp(short respState, List<GaMomentCommentObject> comments)

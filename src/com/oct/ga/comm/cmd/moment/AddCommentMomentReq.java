@@ -25,7 +25,7 @@ public class AddCommentMomentReq
 	{
 		this();
 
-		this.momentId = momentId;
+		this.setMomentId(momentId);
 		this.setTxt(txt);
 	}
 
