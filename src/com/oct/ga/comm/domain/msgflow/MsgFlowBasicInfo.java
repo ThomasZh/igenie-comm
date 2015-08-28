@@ -14,6 +14,7 @@ public class MsgFlowBasicInfo
 	private String fromAccountName;
 	private String fromAccountAvatarUrl;
 	private String channelName;
+	private String toActionAccountId;
 	private String toActionAccountName;
 	private String toActionAccountAvatarUrl;
 	private ActivitySubscribeInfo activity;
@@ -87,6 +88,16 @@ public class MsgFlowBasicInfo
 	public void setChannelName(String channelName)
 	{
 		this.channelName = channelName;
+	}
+
+	public String getToActionAccountId()
+	{
+		return toActionAccountId;
+	}
+
+	public void setToActionAccountId(String toActionAccountId)
+	{
+		this.toActionAccountId = toActionAccountId;
 	}
 
 }

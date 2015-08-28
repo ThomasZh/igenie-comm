@@ -121,6 +121,8 @@ public interface Command
 	public static final short QUERY_MOMENT_COMMENT_PAGINATION_RESP = 1130;
 	public static final short QUERY_MOMENT_LOG_PAGINATION_REQ = 1131;
 	public static final short QUERY_MOMENT_LOG_PAGINATION_RESP = 1132;
+	public static final short QUERY_MOMENT_REQ = 1133;
+	public static final short QUERY_MOMENT_RESP = 1134;
 
 	// ////////////////////////////////////////////////////////
 	// group: member
@@ -244,6 +246,9 @@ public interface Command
 	public static final short INLINECAST_GOMOKU_NOTIFY_REQ = 1508;
 	public static final short MULTICAST_GOMOKU_NOTIFY_RESP = 1509;
 	public static final short INLINECAST_APPLY_STATE_REQ = 1511;
+	public static final short INLINECAST_ACTIVITY_JOIN_REQ = 1513;
+	public static final short INLINECAST_TASK_LOG_REQ = 1515;
+	public static final short INLINECAST_TASK_LOG_RESP = 1516;
 
 	// ////////////////////////////////////////////////////////
 	// invite

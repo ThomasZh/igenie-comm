@@ -86,6 +86,8 @@ import com.oct.ga.comm.cmd.gatekeeper.GK_ARQ;
 import com.oct.ga.comm.cmd.group.DndQueryResp;
 import com.oct.ga.comm.cmd.group.DndSetResp;
 import com.oct.ga.comm.cmd.group.QueryMemberListResp;
+import com.oct.ga.comm.cmd.inlinecast.InlinecastTaskLogReq;
+import com.oct.ga.comm.cmd.inlinecast.InlinecastTaskLogResp;
 import com.oct.ga.comm.cmd.invite.ConfirmReceivedInviteReq;
 import com.oct.ga.comm.cmd.invite.ConfirmReceivedInviteResp;
 import com.oct.ga.comm.cmd.invite.InviteFeedbackResp;
@@ -102,6 +104,7 @@ import com.oct.ga.comm.cmd.moment.QueryMomentFavoritePaginationResp;
 import com.oct.ga.comm.cmd.moment.QueryMomentLogPaginationResp;
 import com.oct.ga.comm.cmd.moment.QueryMomentPaginationResp;
 import com.oct.ga.comm.cmd.moment.QueryMomentPhotoFlowPaginationResp;
+import com.oct.ga.comm.cmd.moment.QueryMomentResp;
 import com.oct.ga.comm.cmd.msg.ConfirmMessageReadResp;
 import com.oct.ga.comm.cmd.msg.QueryMessageBadgeNumberResp;
 import com.oct.ga.comm.cmd.msg.QueryMessagePaginationResp;
@@ -302,6 +305,8 @@ public abstract class CommandParser
 			return new QueryMomentCommentPaginationResp().decode(tlv);
 		case Command.QUERY_MOMENT_LOG_PAGINATION_RESP:
 			return new QueryMomentLogPaginationResp().decode(tlv);
+		case Command.QUERY_MOMENT_RESP:
+			return new QueryMomentResp().decode(tlv);
 
 		case Command.FOLLOWING_RESP:
 			return new FollowingResp().decode(tlv);// lwz7512@2014/11/03
@@ -379,6 +384,10 @@ public abstract class CommandParser
 			return new QueryInvitedRegisterSemiIdResp().decode(tlv);
 		case Command.INVITE_CONFIRM_RECEIVED_REQ:
 			return new ConfirmReceivedInviteReq().decode(tlv);
+		case Command.INLINECAST_TASK_LOG_REQ:
+			return new InlinecastTaskLogReq().decode(tlv);
+		case Command.INLINECAST_TASK_LOG_RESP:
+			return new InlinecastTaskLogResp().decode(tlv);
 
 		case Command.SYNC_APPLY_STATE_RESP:
 			return new SyncApplyStateResp().decode(tlv);

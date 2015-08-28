@@ -1,4 +1,14 @@
 ======================================================================
+igenie-comm_v3.13.2											2015.8.27
+new feature:
+	1.add inlinecast task log command class.
+	
+======================================================================
+igenie-comm_v3.13.1											2015.8.26
+new feature:
+	1.add query moment command class.
+
+======================================================================
 igenie-comm_v3.13.0											2015.8.21
 new feature:
 	1.add moment comment command class.
