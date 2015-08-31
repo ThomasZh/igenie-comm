@@ -42,7 +42,7 @@ public class InlinecastTaskLogReq
 		int i = 0;
 
 		TlvObject tIoSessionId = tlv.getChild(i++);
-		long ioSessionId = TlvByteUtil.byte2Long(tIoSessionId.getValue());
+		ioSessionId = TlvByteUtil.byte2Long(tIoSessionId.getValue());
 		logger.debug("ioSessionId: " + ioSessionId);
 
 		TlvObject tJson = tlv.getChild(i++);

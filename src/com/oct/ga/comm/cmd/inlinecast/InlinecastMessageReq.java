@@ -65,7 +65,7 @@ public class InlinecastMessageReq
 		logger.debug("timestamp: " + timestamp);
 
 		TlvObject tCurrentTimestamp = tlv.getChild(i++);
-		int currentTimestamp = TlvByteUtil.byte2Int(tCurrentTimestamp.getValue());
+		currentTimestamp = TlvByteUtil.byte2Int(tCurrentTimestamp.getValue());
 		logger.debug("currentTimestamp: " + currentTimestamp);
 
 		TlvObject tChannelType = tlv.getChild(i++);
